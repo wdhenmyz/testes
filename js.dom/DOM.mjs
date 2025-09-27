@@ -61,9 +61,13 @@ export default class DOM {
   }
 
   // adiciona conteúdo HTML (em todos os elementos encontrados)
-  append(content) {
+  append(content, position = 'beforeend') {
+    if (position !== 'beforeend' && position !== 'afterbegin' && position !== 'beforebegin' && position !== 'afterend') {
+      throw new Error(`Posição inválida: "${position}". Use "beforeend", "afterbegin", "beforebegin" ou "afterend".`);
+    }
+
     this.elements.forEach(el => {
-      el.insertAdjacentHTML('beforeend', content);
+      el.insertAdjacentHTML(position, content);
     })
   }
 
@@ -76,4 +80,12 @@ export default class DOM {
     });
   }
   //////////////////////////////////////////////
+
+  //// funções de manipulação de eventos ///////
+  // adiciona um evento (em todos os elementos encontrados)
+  addEvent(event, ...callback) {
+    this.elements.forEach(el => {
+      el.addEventListener(event, ...callback);
+    });
+  }
 }
