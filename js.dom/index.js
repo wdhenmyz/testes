@@ -36,7 +36,7 @@ div3.set({
 const div4 = new DOM("id", "change");
 const html = `
   <h2>Conteúdo alterado!</h2>
-  <p>Este conteúdo foi inserido dinamicamente usando a classe Style.</p>
+  <p>Este conteúdo foi inserido dinamicamente usando o método html.</p>
   <p>a classe deste div foi mudada para changed</p>
   <p>
     ele ganhara o style de div1(que é global a todos os div's)
