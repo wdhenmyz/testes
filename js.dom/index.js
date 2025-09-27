@@ -1,7 +1,9 @@
 import DOM from "./DOM.mjs";
 
+let style1, style2, style3;
+
 const div1 = new DOM("tagname", "div");
-div1.set({
+style1 = {
   backgroundColor: "lightblue",
   color: "darkgreen",
   padding: "10px",
@@ -9,10 +11,11 @@ div1.set({
   borderRadius: "5px",
   fontFamily: "Arial, sans-serif",
   textAlign: "center"
-});
+}
+div1.set(style1);
 
 const div2 = new DOM("id", "teste");
-let style = {
+style2 = {
   backgroundColor: "lightcoral",
   color: "white",
   padding: "15px",
@@ -21,10 +24,10 @@ let style = {
   fontFamily: "'Courier New', monospace",
   textAlign: "left"
 }
-div2.set(style);
+div2.set(style2);
 
 const div3 = new DOM("classname", "teste");
-div3.set({
+style3 = {
     backgroundColor: "purple",
     color: "white",
     padding: "20px",
@@ -32,7 +35,8 @@ div3.set({
     borderRadius: "15px",
     fontFamily: "'Times New Roman', serif",
     textAlign: "right"
-})
+}
+div3.set(style3);
 
 const div4 = new DOM("id", "change");
 const html = `
@@ -54,3 +58,10 @@ div4.append(`
 // div3.remove();
 // div2.remove();
 // div1.remove(); // apagando esta div também apaga as outras, pois são todas div's e o css dele é global para todas as div's
+
+const al = () => alert("Div clicada!");
+
+div4.addEvent("click", al);
+div4.addEvent("mouseover", () => div4.set(style2));
+div4.addEvent("mouseout", () => div4.set(style1));
+//div4.removeEvent("click", al);

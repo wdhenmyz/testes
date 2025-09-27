@@ -83,9 +83,16 @@ export default class DOM {
 
   //// funções de manipulação de eventos ///////
   // adiciona um evento (em todos os elementos encontrados)
-  addEvent(event, ...callback) {
+  addEvent(event, callback) {
     this.elements.forEach(el => {
-      el.addEventListener(event, ...callback);
+      el.addEventListener(event, callback);
     });
+  }
+
+  // remove um evento (em todos os elementos encontrados)
+  removeEvent(event, callback) {
+    this.elements.forEach(el => {
+      el.removeEventListener(event, callback);
+    })
   }
 }
