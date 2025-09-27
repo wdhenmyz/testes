@@ -1,4 +1,4 @@
-import DOM from "./style.mjs";
+import DOM from "./DOM.mjs";
 
 const div1 = new DOM("tagname", "div");
 div1.set({
@@ -36,12 +36,15 @@ div3.set({
 const div4 = new DOM("id", "change");
 const html = `
   <h2>Conteúdo alterado!</h2>
-  <p>Este conteúdo foi inserido dinamicamente usando o método html.</p>
-  <p>a classe deste div foi mudada para changed</p>
+  <p>Este conteúdo foi inserido usando o método innerHTML.</p>
+  <p>a classe deste div foi mudada para changed usando o método attribute</p>
   <p>
     ele ganhara o style de div1(que é global a todos os div's)
     por não ter definido css para essa classe ou id
   </p>
   `
-div4.html(html);
+div4.innerHTML(html);
 div4.attribute("class", "changed");
+div4.append(`
+  <p>Este parágrafo foi adicionado ao final do conteúdo existente usando o método append.</p>
+  `);
