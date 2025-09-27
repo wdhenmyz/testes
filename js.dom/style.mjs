@@ -62,9 +62,7 @@ export default class DOM {
 
   // adiciona conteúdo HTML (em todos os elementos encontrados)
   append(content) {
-    this.elements.forEach(el => {
-      el.insertAdjacentHTML('beforeend', content);
-    });
+    
   }
   //////////////////////////////////////////////
 }
