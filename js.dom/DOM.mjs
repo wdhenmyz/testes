@@ -66,5 +66,14 @@ export default class DOM {
       el.insertAdjacentHTML('beforeend', content);
     })
   }
+
+  // remove o elemento do DOM (em todos os elementos encontrados)
+  remove() {
+    this.elements.forEach(el => {
+      if (el.parentNode) {
+        el.parentNode.removeChild(el);
+      }
+    });
+  }
   //////////////////////////////////////////////
 }

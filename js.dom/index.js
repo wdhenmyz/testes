@@ -12,7 +12,7 @@ div1.set({
 });
 
 const div2 = new DOM("id", "teste");
-div2.set({
+let style = {
   backgroundColor: "lightcoral",
   color: "white",
   padding: "15px",
@@ -20,7 +20,8 @@ div2.set({
   borderRadius: "10px",
   fontFamily: "'Courier New', monospace",
   textAlign: "left"
-});
+}
+div2.set(style);
 
 const div3 = new DOM("classname", "teste");
 div3.set({
@@ -48,3 +49,8 @@ div4.attribute("class", "changed");
 div4.append(`
   <p>Este parágrafo foi adicionado ao final do conteúdo existente usando o método append.</p>
   `);
+
+// div4.remove();
+// div3.remove();
+// div2.remove();
+// div1.remove(); // apagando esta div também apaga as outras, pois são todas div's e o css dele é global para todas as div's
