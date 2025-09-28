@@ -54,6 +54,8 @@ div4.append(`
   <p>Este parágrafo foi adicionado ao final do conteúdo existente usando o método append.</p>
   `);
 
+// div3.append(html)
+
 // div4.remove();
 // div3.remove();
 // div2.remove();

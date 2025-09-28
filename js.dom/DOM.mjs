@@ -61,14 +61,30 @@ export default class DOM {
   }
 
   // adiciona conteúdo HTML (em todos os elementos encontrados)
+  // permite definir a posição onde o conteúdo será inserido
   append(content, position = 'beforeend') {
-    if (position !== 'beforeend' && position !== 'afterbegin' && position !== 'beforebegin' && position !== 'afterend') {
-      throw new Error(`Posição inválida: "${position}". Use "beforeend", "afterbegin", "beforebegin" ou "afterend".`);
+    const validPositions = ['beforeend', 'afterbegin', 'beforebegin', 'afterend'];
+    if (!validPositions.includes(position)) {
+      throw new Error(
+        `Posição inválida: "${position}". Use ${validPositions.join(', ')}.`
+      );
     }
 
+    // Permite adicionar tanto strings HTML quanto elementos DOM
+    /* 
+      nota, insertAdjacentHTML tem risco de html injection
+      tenha cuidado ao usar com conteúdo dinâmico
+    */
     this.elements.forEach(el => {
-      el.insertAdjacentHTML(position, content);
-    })
+      if (content instanceof Element) {
+        // Clona o elemento para múltiplos usos
+        el.insertAdjacentElement(position, content.cloneNode(true));
+      } else if (typeof content === 'string') {
+        el.insertAdjacentHTML(position, content);
+      } else {
+        throw new Error('Content deve ser uma string ou um Element.');
+      }
+    });
   }
 
   // remove o elemento do DOM (em todos os elementos encontrados)
@@ -77,6 +93,45 @@ export default class DOM {
       if (el.parentNode) {
         el.parentNode.removeChild(el);
       }
+    });
+  }
+
+  // adiciona um nó (elemento) como filho de outro (em todos os elementos encontrados)
+  appendChild(element, content) {
+    const childElement = document.createElement(`${element}`);
+    childElement.textContent = content;
+
+    this.elements.forEach(el => {
+      el.appendChild(childElement);
+    });
+  }
+
+  // remove um filho específico de um elemento pai (em todos os elementos encontrados)
+  removeChild(type, selector) {
+    const children = this._getElements(type, selector);
+
+    this.elements.forEach(parent => {
+      children.forEach(child => {
+        if (parent.contains(child)) {
+          parent.removeChild(child);
+        }
+      });
+    });
+  }
+
+  // substitui um filho por outro (em todos os elementos encontrados)
+  replaceChild(before = [], after = []) {
+    const antigos = this._getElements(before[0], before[1]);
+
+    this.elements.forEach(parent => {
+      antigos.forEach(antigo => {
+        const novo = document.createElement(after[0]);
+
+        novo.textContent = after[1];
+        if (parent.contains(antigo)) {
+          parent.replaceChild(novo, antigo);
+        }
+      });
     });
   }
   //////////////////////////////////////////////
