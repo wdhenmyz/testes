@@ -4,6 +4,8 @@
 * um "jquery da vida" para simplificar o DOM usando classe em js (ignore style.mjs, ele está vazio e vou excluir ele depois)
 * como isso é só DOM, ele pode ser usado em conjunto com tailwind, bootstrap e entre outros
 
+## versão 1
+---
 #### métodos atuais
 * ## css
 
@@ -28,5 +30,4 @@
 * addEvent() -> adiciona um evento
 * removeEvent() -> remove um evento
 ---
-
 ## nota: se voce quer que somente um elemento seja manipulado pelo DOM, tenha certeza de usar só id do elemento em questão, se não, pode acontecer de mais de um elemento ser afetado
