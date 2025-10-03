@@ -134,6 +134,15 @@ export default class DOM {
       });
     });
   }
+
+  // variação do método innerhtml, para ser usado em prototipagem e testes em html
+  // a variável enabled define se sandbox vai ser ativado ou não
+  // enabled naturalmente sera true, se for false nada ocorrerá
+  sandbox(content, enabled = true) {
+    if (enabled) {
+      this.innerHTML(content)
+    }
+  }
   //////////////////////////////////////////////
 
   //// funções de manipulação de eventos ///////
