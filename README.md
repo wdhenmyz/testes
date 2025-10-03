@@ -5,7 +5,7 @@
 * como isso é só DOM, ele pode ser usado em conjunto com tailwind, bootstrap e entre outros
 
 ## versão 1
----
+
 #### métodos atuais
 * ## css
 
