@@ -24,8 +24,8 @@ div.addEvent("click", al)
 // new DOM('query', 'p').set({backgroundColor: 'purple'})
 // new DOM('queryALL', 'span').set({backgroundColor: 'purple'})
 div.append(` <a href="./page">page</a> `,"afterend")
-div.append(` <a href="./quadrado">quadrado</a> `,"afterend")
-div.append(` <a href="./sandbox">sandbox</a> `,"afterend")
+    .append(` <a href="./quadrado">quadrado</a> `,"afterend")
+    .append(` <a href="./sandbox">sandbox</a> `,"afterend")
 
 
 
