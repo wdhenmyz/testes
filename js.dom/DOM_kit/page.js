@@ -14,7 +14,7 @@ export default class Page {
 
     CSS() {}
 
-    FUNCTIONS(dom) {}
+    FUNCTIONS() {}
 
     load(html, css) {
         this.dom.innerHTML(html);
