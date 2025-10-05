@@ -1,4 +1,4 @@
-import DOM from '../DOM.mjs'
+import DOM from './DOM.mjs'
 
 export default class Page {
     constructor(type, selector) {

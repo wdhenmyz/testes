@@ -1,4 +1,4 @@
-import DOM from "./DOM.mjs";
+import DOM from "./DOM_kit/DOM.mjs";
 
 const div = new DOM("id", "child");
 let p = "<p id='child-paragraph'>mais um texto</p>"

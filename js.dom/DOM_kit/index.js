@@ -1,4 +1,4 @@
-import DOM from "../DOM.mjs";
+import DOM from "./DOM.mjs";
 
 const teste = new DOM('id', 'teste')
 
