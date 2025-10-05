@@ -1,4 +1,4 @@
-import Page from "./page.js";
+import Page from "../DOM_kit/page.js";
 import { Element } from "./components/element.js";
 
 export default class HomePage extends Page {
