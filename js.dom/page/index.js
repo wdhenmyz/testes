@@ -27,6 +27,10 @@ export default class HomePage extends Page {
             'flex-direction': 'column',
         };
     }
+
+    FUNCTIONS() {
+        
+    }
 }
 
 new HomePage()

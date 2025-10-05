@@ -15,6 +15,15 @@ p2.set({ color: "red", backgroundColor: "yellow" });
 
 div.replaceChild(["id", "mudar"], ["span", "novo texto"]);
 
+const al = () => alert("Div clicada!");
+
+div.addEvent("click", al)
+    .removeEvent("click", al)
+    .append(`<p>ola</p>`)
+
+// new DOM('query', 'p').set({backgroundColor: 'purple'})
+// new DOM('queryALL', 'span').set({backgroundColor: 'purple'})
+
 
 
 

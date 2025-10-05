@@ -12,14 +12,19 @@ export default class DOM {
   _getElements(type, selector) {
     switch (type) {
       case "id":
-        const el = document.getElementById(selector);
-        return el ? [el] : [];
+        const el1 = document.getElementById(selector);
+        return el1 ? [el1] : [];
       case "tagname":
         return Array.from(document.getElementsByTagName(selector));
       case "classname":
         return Array.from(document.getElementsByClassName(selector));
+      case "query":
+        const el2 = document.querySelector(selector);
+        return el2 ? [el2] : [];
+      case "queryALL":
+        return Array.from(document.querySelectorAll(selector))
       default:
-        throw new Error(`Tipo inválido: "${type}". Use "id", "tagname" ou "classname".`);
+        throw new Error(`Tipo inválido: "${type}". Use "id", "tagname", "classname", "query" ou "queryALL".`);
     }
   }
 
@@ -29,19 +34,27 @@ export default class DOM {
     this.elements.forEach(el => {
       Object.assign(el.style, styles);
     });
+
+    return this
   }
 
   // adiciona/remova/troca classes
   addClass(...classes) {
     this.elements.forEach(el => el.classList.add(...classes));
+
+    return this
   }
 
   removeClass(...classes) {
     this.elements.forEach(el => el.classList.remove(...classes));
+
+    return this
   }
 
   toggleClass(className) {
     this.elements.forEach(el => el.classList.toggle(className));
+
+    return this
   }
   ///////////////////////////////////////////////
 
@@ -51,6 +64,8 @@ export default class DOM {
     this.elements.forEach(el => {
       el.innerHTML = content;
     });
+
+    return this
   }
 
   // altera ou cria o conteúdo de um atributo (em todos os elementos encontrados)
@@ -58,6 +73,8 @@ export default class DOM {
     this.elements.forEach(el => {
       el.setAttribute(attribute, value)
     });
+
+    return this
   }
 
   // adiciona conteúdo HTML (em todos os elementos encontrados)
@@ -85,6 +102,8 @@ export default class DOM {
         throw new Error('Content deve ser uma string ou um Element.');
       }
     });
+
+    return this
   }
 
   // remove o elemento do DOM (em todos os elementos encontrados)
@@ -94,6 +113,8 @@ export default class DOM {
         el.parentNode.removeChild(el);
       }
     });
+
+    return this
   }
 
   // adiciona um nó (elemento) como filho de outro (em todos os elementos encontrados)
@@ -104,6 +125,8 @@ export default class DOM {
     this.elements.forEach(el => {
       el.appendChild(childElement);
     });
+
+    return this
   }
 
   // remove um filho específico de um elemento pai (em todos os elementos encontrados)
@@ -117,6 +140,8 @@ export default class DOM {
         }
       });
     });
+
+    return this
   }
 
   // substitui um filho por outro (em todos os elementos encontrados)
@@ -133,6 +158,8 @@ export default class DOM {
         }
       });
     });
+
+    return this
   }
 
   // variação do método innerhtml, para ser usado em prototipagem e testes em html
@@ -151,6 +178,8 @@ export default class DOM {
     this.elements.forEach(el => {
       el.addEventListener(event, callback);
     });
+
+    return this
   }
 
   // remove um evento (em todos os elementos encontrados)
@@ -158,5 +187,7 @@ export default class DOM {
     this.elements.forEach(el => {
       el.removeEventListener(event, callback);
     })
+
+    return this
   }
 }

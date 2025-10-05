@@ -8,23 +8,17 @@ export default class Page {
         this.css = this.CSS();
 
         this.load(this.html, this.css);
-        this.FUNCTIONS()
     }
 
-    HTML() {
+    HTML() {}
 
-    }
+    CSS() {}
 
-    CSS() {
-
-    }
-
-    FUNCTIONS() {
-        
-    }
+    FUNCTIONS(dom) {}
 
     load(html, css) {
         this.dom.innerHTML(html);
         this.dom.set(css);
+        this.FUNCTIONS()
     }
 }
