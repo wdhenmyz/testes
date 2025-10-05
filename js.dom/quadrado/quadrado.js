@@ -1,4 +1,4 @@
-import DOM from "../DOM.mjs"
+import DOM from "../DOM_kit/DOM.mjs"
 
 const tabela = new DOM('id', 'quadrado')
 

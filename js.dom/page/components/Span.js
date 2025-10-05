@@ -1,6 +1,6 @@
 import DOM from "../../DOM_kit/DOM.mjs"
 
-export const Element = (type, selector) => {
+export const Span = (type, selector) => {
     const element = new DOM(type, selector)
 
     element.set({

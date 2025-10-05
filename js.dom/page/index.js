@@ -1,11 +1,11 @@
 import Page from "../DOM_kit/page.js";
-import { Element } from "./components/element.js";
+import { Span } from "./components/Span.js"; 
 
 export default class HomePage extends Page {
     constructor () {
         super('id', 'app')
 
-        this.span = Element("tagname",'span')
+        this.span = Span("tagname",'span')
     }
 
     HTML() {
@@ -29,7 +29,7 @@ export default class HomePage extends Page {
     }
 
     FUNCTIONS() {
-        
+        Span("tagname",'span')
     }
 }
 
