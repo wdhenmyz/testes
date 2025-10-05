@@ -10,9 +10,13 @@ export default class Page {
         this.load(this.html, this.css);
     }
 
-    HTML() {}
+    HTML() {
+        return ``
+    }
 
-    CSS() {}
+    CSS() {
+        return {}
+    }
 
     FUNCTIONS() {}
 
