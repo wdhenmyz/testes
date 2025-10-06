@@ -169,6 +169,11 @@ export default class DOM {
       this.innerHTML(content)
     }
   }
+
+  // retorna o textContent do elemento em questão
+  getText() {
+    return this.elements[0]?.textContent || "";
+  }
   //////////////////////////////////////////////
 
   //// funções de manipulação de eventos ///////

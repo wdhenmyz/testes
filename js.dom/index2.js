@@ -19,7 +19,7 @@ const al = () => alert("Div clicada!");
 
 div.addEvent("click", al)
     .removeEvent("click", al)
-    .append(`<p>ola</p>`)
+    .append(`<p id="mudar">ola</p>`)
 
 // new DOM('query', 'p').set({backgroundColor: 'purple'})
 // new DOM('queryALL', 'span').set({backgroundColor: 'purple'})
@@ -27,6 +27,9 @@ div.append(` <a href="./page">page</a> `,"afterend")
     .append(` <a href="./quadrado">quadrado</a> `,"afterend")
     .append(` <a href="./sandbox">sandbox</a> `,"afterend")
 
+let text = new DOM('id','mudar').getText()
+
+div.append(`<section>${text}</section>`)
 
 
 
