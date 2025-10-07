@@ -69,6 +69,7 @@ export default class Template {
 ```
 em uma página
 ```
+import DOM from "../DOM_kit/DOM.mjs";
 import Template from "../DOM_kit/Template.js";
 import { Span } from "./components/Span.js"; 
 
@@ -94,7 +95,7 @@ export default class HomePage extends Template {
     }
 
     FUNCTIONS() {
-        Span("tagname",'span')
+        Span(new DOM('tagname','span'))
     }
 }
 
@@ -102,12 +103,8 @@ new HomePage('id', 'app')
 
 
 // /Span.js
-import DOM from "../../DOM_kit/DOM.mjs"
-
-export const Span = (type, selector) => {
-    const element = new DOM(type, selector)
-
-    element.set({
+export const Span = (span) => {
+    span.set({
         width: '400px',
         height: '80px',
         backgroundColor: 'blue',
