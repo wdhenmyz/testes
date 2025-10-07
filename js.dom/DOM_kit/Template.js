@@ -1,6 +1,6 @@
 import DOM from './DOM.mjs'
 
-export default class Page {
+export default class Template {
     constructor(type, selector) {
         this.dom = new DOM(type, selector)
 

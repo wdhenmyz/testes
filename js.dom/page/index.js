@@ -1,7 +1,7 @@
-import Page from "../DOM_kit/page.js";
+import Template from "../DOM_kit/Template.js";
 import { Span } from "./components/Span.js"; 
 
-export default class HomePage extends Page {
+export default class HomePage extends Template {
     constructor () {
         super('id', 'app')
 
