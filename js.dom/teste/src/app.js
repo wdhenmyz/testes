@@ -4,6 +4,7 @@ import './style.css'
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.js'
+import DOM from '../DOM_kit/DOM.mjs'
 
 class app extends Template {
     HTML() {
@@ -31,7 +32,7 @@ class app extends Template {
     }
 
     FUNCTIONS() {
-      setupCounter(document.querySelector('#counter'))
+      setupCounter(new DOM('id', 'counter'))
     }
 }
 
