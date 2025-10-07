@@ -1,9 +1,5 @@
-import DOM from "../../DOM_kit/DOM.mjs"
-
-export const Span = (type, selector) => {
-    const element = new DOM(type, selector)
-
-    element.set({
+export const Span = (span) => {
+    span.set({
         width: '400px',
         height: '80px',
         backgroundColor: 'blue',

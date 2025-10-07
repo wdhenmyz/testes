@@ -1,13 +1,8 @@
+import DOM from "../DOM_kit/DOM.mjs";
 import Template from "../DOM_kit/Template.js";
 import { Span } from "./components/Span.js"; 
 
 export default class HomePage extends Template {
-    constructor () {
-        super('id', 'app')
-
-        this.span = Span("tagname",'span')
-    }
-
     HTML() {
         return`
             <span></span>
@@ -29,8 +24,8 @@ export default class HomePage extends Template {
     }
 
     FUNCTIONS() {
-        Span("tagname",'span')
+        Span(new DOM('tagname','span'))
     }
 }
 
-new HomePage()
+new HomePage('id', 'app')
