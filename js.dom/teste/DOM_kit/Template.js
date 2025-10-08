@@ -7,7 +7,7 @@ export default class Template {
         this.html = this.HTML();
         this.css = this.CSS();
 
-        this.load(this.html, this.css);
+        this.load(this.html, this.css, this.dom);
     }
 
     HTML() {
@@ -18,11 +18,11 @@ export default class Template {
         return {}
     }
 
-    FUNCTIONS() {}
+    FUNCTIONS(dom) {}
 
-    load(html, css) {
+    load(html, css, dom) {
         this.dom.innerHTML(html);
         this.dom.set(css);
-        this.FUNCTIONS()
+        this.FUNCTIONS(dom)
     }
 }
