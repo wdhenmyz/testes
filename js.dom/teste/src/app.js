@@ -6,6 +6,8 @@ import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.js'
 import DOM from '../DOM_kit/DOM.mjs'
 
+import count_button from './components/button.js'
+
 class app extends Template {
     HTML() {
         return `
@@ -18,7 +20,6 @@ class app extends Template {
             </a>
             <h1>Hello Vite + vanilla.js(com DOM_kit)!</h1>
             <div class="card">
-              <button id="counter" type="button"></button>
             </div>
             <p class="read-the-docs">
               Click on the Vite logo to learn more
@@ -37,7 +38,7 @@ class app extends Template {
     }
 
     FUNCTIONS() {
-      setupCounter(new DOM('id', 'counter'))
+      new count_button('classname', 'card')
     }
 }
 
