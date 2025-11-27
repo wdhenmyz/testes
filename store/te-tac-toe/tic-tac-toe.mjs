@@ -6,6 +6,7 @@ export default class TicTacToe {
         this.renderStatus(state, statusEl)
     }
 
+    // --------- RENDERIZA TABULEIRO ---------
     renderBoard(state, gameStore, boardEl) {
       boardEl.innerHTML = ""; // limpa
     
@@ -34,6 +35,7 @@ export default class TicTacToe {
       });
     }
 
+    // --------- RENDERIZA STATUS ---------
     renderStatus(state, statusEl) {
         if (state.winner === "draw") {
             statusEl.textContent = "Empate!";

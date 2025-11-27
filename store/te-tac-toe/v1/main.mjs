@@ -1,5 +1,5 @@
-import Store from "../store.mjs";
-import { checkWinner } from "./checkWinner.mjs";
+import Store from "../../store.mjs";
+import { checkWinner } from "../checkWinner.mjs";
 
 const gameStore = new Store({
   board: Array(9).fill(""),
