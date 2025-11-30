@@ -2,10 +2,10 @@
 import Store from "./store.mjs";
 
 // Segundo parâmetro = chave para persistência localStorage
-const countStore = new Store({ count: 0 }, "countStore");
+export const countStore = new Store({ count: 0 }, "countStore");
 
 // Atualiza o estado
-countStore.set({ count: countStore.get().count + 1 });
+countStore.set({ count: countStore.get().count + 2 });
 
 // Acessa o estado atual
 console.log("Contagem atual:", countStore.get().count);
