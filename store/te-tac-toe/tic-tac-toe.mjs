@@ -1,9 +1,18 @@
 import { checkWinner } from "./checkWinner.mjs";
 
 export default class TicTacToe {
-    constructor (state, gameStore, boardEl, statusEl) {
+    constructor (state, gameStore, boardEl, statusEl, restartBtn) {
         this.renderBoard(state, gameStore, boardEl)
         this.renderStatus(state, statusEl)
+
+    // Botão reiniciar
+restartBtn.onclick = () => {
+  gameStore.set({
+    board: Array(9).fill(""),
+    current: "X",
+    winner: null,
+  });
+};
     }
 
     // --------- RENDERIZA TABULEIRO ---------
