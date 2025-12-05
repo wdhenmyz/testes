@@ -1,27 +1,33 @@
 export default class Store {
   constructor(initialState = {}, key = null) {
-    this.key = key; // chave opcional para salvar no localStorage
+    this.key = key;
     this.listeners = new Set();
 
-    // Se tiver chave, tenta carregar o estado salvo
+    // Estado inicial padrão com loading/error já incluídos
+    const baseState = {
+      loading: false,
+      error: null,
+      ...initialState
+    };
+
+    // Se tiver chave, tenta carregar
     if (key) {
-      const savedState = localStorage.getItem(key);
-      this.state = savedState ? JSON.parse(savedState) : initialState;
+      const saved = localStorage.getItem(key);
+      this.state = saved ? { ...baseState, ...JSON.parse(saved) } : baseState;
     } else {
-      this.state = initialState;
+      this.state = baseState;
     }
   }
 
-  // Retorna uma cópia imutável do estado atual
+  // ---- GET ----
   get() {
     return structuredClone(this.state);
   }
 
-  // Atualiza o estado parcialmente e salva se necessário
+  // ---- SET ----
   set(partialState) {
     this.state = { ...this.state, ...partialState };
 
-    // Se houver uma key, salva no localStorage
     if (this.key) {
       localStorage.setItem(this.key, JSON.stringify(this.state));
     }
@@ -29,26 +35,51 @@ export default class Store {
     this.notify();
   }
 
-  // Inscreve um callback para mudanças de estado
+  // ---- SUBSCRIBE ----
   subscribe(callback) {
     this.listeners.add(callback);
     return () => this.listeners.delete(callback);
   }
 
-  // Notifica todos os inscritos
   notify() {
-    for (const cb of this.listeners) {
-      cb(this.get());
-    }
+    for (const cb of this.listeners) cb(this.get());
   }
 
-  // Limpa o estado e o armazenamento local
+  // ---- RESET ----
   reset() {
     this.state = {};
     if (this.key) localStorage.removeItem(this.key);
     this.notify();
   }
+
+  // ---- LOAD ASSÍNCRONO ----
+  async load(asyncFunction) {
+    try {
+      // inicia carregamento
+      this.set({ loading: true, error: null });
+
+      const result = await asyncFunction();
+
+      // sucesso
+      this.set({
+        loading: false,
+        error: null,
+        data: result
+      });
+
+      return result;
+
+    } catch (err) {
+      // erro
+      this.set({
+        loading: false,
+        error: err.message || "Erro desconhecido"
+      });
+      return null;
+    }
+  }
 }
+
 
 /*
 const countStore = new Store({count: 0})

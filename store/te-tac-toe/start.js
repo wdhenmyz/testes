@@ -14,17 +14,8 @@ const restartBtn = document.getElementById("restart");
 
 // Inscrição reativa
 gameStore.subscribe(state => {
-  new TicTacToe(state, gameStore, boardEl, statusEl)
+  new TicTacToe(state, gameStore, boardEl, statusEl, restartBtn)
 });
 
 // Inicializa
-new TicTacToe(gameStore.get(), gameStore, boardEl, statusEl)
-
-// Botão reiniciar
-restartBtn.onclick = () => {
-  gameStore.set({
-    board: Array(9).fill(""),
-    current: "X",
-    winner: null,
-  });
-};
+new TicTacToe(gameStore.get(), gameStore, boardEl, statusEl, restartBtn)

@@ -6,13 +6,13 @@ export default class TicTacToe {
         this.renderStatus(state, statusEl)
 
     // Botão reiniciar
-restartBtn.onclick = () => {
-  gameStore.set({
-    board: Array(9).fill(""),
-    current: "X",
-    winner: null,
-  });
-};
+        restartBtn.onclick = () => {
+            gameStore.set({
+                board: Array(9).fill(""),
+                current: "X",
+                winner: null,
+            });
+        };
     }
 
     // --------- RENDERIZA TABULEIRO ---------
