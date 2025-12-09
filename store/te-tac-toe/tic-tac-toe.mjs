@@ -1,11 +1,11 @@
-import { checkWinner } from "./checkWinner.mjs";
+//import { checkWinner } from "./checkWinner.mjs";
 
 export default class TicTacToe {
     constructor (state, gameStore, boardEl, statusEl, restartBtn) {
         this.renderBoard(state, gameStore, boardEl)
         this.renderStatus(state, statusEl)
 
-    // Botão reiniciar
+        // Botão reiniciar
         restartBtn.onclick = () => {
             gameStore.set({
                 board: Array(9).fill(""),
@@ -30,7 +30,7 @@ export default class TicTacToe {
             const newBoard = [...state.board];
             newBoard[i] = state.current;
     
-            const winner = checkWinner(newBoard);
+            const winner = this.checkWinner(newBoard);
     
                 gameStore.set({
                     board: newBoard,
@@ -57,5 +57,29 @@ export default class TicTacToe {
         }
 
         statusEl.textContent = `Vez de: ${state.current}`;
+    }
+
+    checkWinner(board) {
+        const wins = [
+            [0, 1, 2], // linhas
+            [3, 4, 5],
+            [6, 7, 8],
+            [0, 3, 6], // colunas
+            [1, 4, 7],
+            [2, 5, 8],
+            [0, 4, 8], // diagonais
+            [2, 4, 6],
+        ];
+
+        for (const [a, b, c] of wins) {
+            if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+            return board[a]; // 'X' OU 'O'
+            }
+        }
+
+        // empate
+        if (board.every(c => c !== "")) return "draw";
+
+        return null;
     }
 }
