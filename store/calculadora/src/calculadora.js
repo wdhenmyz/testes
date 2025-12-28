@@ -29,6 +29,9 @@ export default class calculadora {
             
             case '**':
                 return this.exp(valores)
+
+            case '%':
+                return this.remainder(valores)
             default:
                 break;
         }
@@ -83,7 +86,19 @@ export default class calculadora {
 
         return inicial
     }
+
+    remainder (valores) {
+        let inicial = this.inicial
+
+        valores.forEach(valor => {
+            inicial %= valor
+        });
+
+        return inicial
+    }
 }
 
-const count = new calculadora(['+','-','*','/','**'], [4,5,6], 3)
+
+/* const count = new calculadora(['+','-','*','/','**', '%'], [4,5,6], 9)
 console.log(count);
+*/
