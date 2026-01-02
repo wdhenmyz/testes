@@ -3,8 +3,6 @@ import Template from '../DOM_kit/Template.js'
 import './style.css'
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
-import DOM from '../DOM_kit/DOM.mjs'
 
 import count_button from './components/button.js'
 
@@ -19,8 +17,8 @@ class app extends Template {
               <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
             </a>
             <h1>Hello Vite + vanilla.js(com DOM_kit)!</h1>
-            <div class="card">
-            </div>
+            <count class="card">
+            </count>
             <p class="read-the-docs">
               Click on the Vite logo to learn more
             </p>
@@ -37,9 +35,17 @@ class app extends Template {
       }
     }
 
+    ATRIBUTTES() {
+      return {
+        id: 'app',
+        class: 'app',
+        title: 'app',
+      }
+    }
+
     FUNCTIONS() {
       new count_button('classname', 'card')
     }
 }
 
-new app ('id', 'app')
+new app ('tagname', 'app')
