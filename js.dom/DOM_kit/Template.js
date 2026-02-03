@@ -7,7 +7,7 @@ export default class Template {
         this.html = this.HTML();
         this.css = this.CSS();
 
-        this.load(this.html, this.css, this.dom);
+        this._load(this.html, this.css, this.dom);
     }
 
     HTML() {
@@ -18,11 +18,21 @@ export default class Template {
         return {}
     }
 
+    ATRIBUTTES() {
+        return {}
+    }
+
     FUNCTIONS(dom) {}
 
-    load(html, css, dom) {
+    _load(html, css, dom) {
         this.dom.innerHTML(html);
         this.dom.set(css);
         this.FUNCTIONS(dom)
+
+        const attributes = this.ATRIBUTTES()
+
+        Object.entries(attributes).forEach(([att, value]) => {
+            this.dom.attribute(att, value);
+        });
     }
 }
