@@ -17,8 +17,8 @@ class app extends Template {
               <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
             </a>
             <h1>Hello Vite + vanilla.js(com DOM_kit)!</h1>
-            <count class="card">
-            </count>
+            <countButton class="card"></countButton>
+            <countButton class="card"></countButton>
             <p class="read-the-docs">
               Click on the Vite logo to learn more
             </p>
@@ -44,7 +44,7 @@ class app extends Template {
     }
 
     FUNCTIONS() {
-      new count_button('classname', 'card')
+      new count_button('tagname', 'countButton')
     }
 }
 

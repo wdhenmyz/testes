@@ -3,7 +3,6 @@ import DOM from './DOM.mjs'
 export default class Template {
     constructor(type, selector) {
         this.dom = new DOM(type, selector)
-
         this.html = this.HTML();
         this.css = this.CSS();
 
