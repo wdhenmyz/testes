@@ -7,14 +7,8 @@ export default class Template {
 
         // definir e renderizar o template
         this.stores = this.Store();
+        this._applyAttributes();
         this._render();
-        this.FUNCTIONS(this.dom)
-        
-        const attributes = this.ATRIBUTTES()
-
-        Object.entries(attributes).forEach(([att, value]) => {
-            this.dom.attribute(att, value);
-        });
     }
 
     HTML() {
@@ -36,10 +30,15 @@ export default class Template {
     }
 
     _render() {
-        const html = this.HTML();
-        const css = this.CSS();
+        this.dom.innerHTML(this.HTML());
+        this.dom.set(this.CSS());
+        this.FUNCTIONS(this.dom)
+    }
 
-        this.dom.innerHTML(html);
-        this.dom.set(css);
+    _applyAttributes() {
+        const attributes = this.ATRIBUTTES();
+        Object.entries(attributes).forEach(([att, value]) => {
+            this.dom.attribute(att, value);
+        });
     }
 }
