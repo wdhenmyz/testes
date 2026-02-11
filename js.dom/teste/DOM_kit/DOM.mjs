@@ -194,8 +194,4 @@ export default class DOM {
 
     return this
   }
-
-  forEach(callback) {
-    this.elements.forEach(callback);
-  }
 }
