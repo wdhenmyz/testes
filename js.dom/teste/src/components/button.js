@@ -1,17 +1,31 @@
-import DOM from "../../DOM_kit/DOM.mjs";
-import Template from "../../DOM_kit/Template";
-import { setupCounter } from "../counter";
+import DOM from "../DOM_kit/DOM.mjs";
+import Template from "../DOM_kit/Template";
+
+import Store from "../DOM_kit/store.mjs";
 
 export default class count_button extends Template {
     HTML () {
+        const {countStore} = this.stores;
+
         return `
-            <button id="counter" type="button"></button>
+            <button class="counterButton" type="button">count is: ${countStore.get().count}</button>
         `
     }
 
-    
-
     FUNCTIONS () {
-        setupCounter(new DOM('id','counter'))
+        const counterButton = new DOM('classname', 'counterButton');
+        const {countStore} = this.stores;
+        
+
+        counterButton.addEvent('click', () => {
+            countStore.set({ count: countStore.get().count + 1});
+            counterButton.innerHTML(`count is: ${countStore.get().count}`);
+        })
+    }
+
+    Store () {
+        return {
+            countStore: new Store({ count: 0 }, 'countStore')
+        }
     }
 }

@@ -1,5 +1,4 @@
-import Template from '../DOM_kit/Template.js'
-
+import Template from './DOM_kit/Template.js'
 import './style.css'
 import javascriptLogo from './javascript.svg'
 import viteLogo from '/vite.svg'
