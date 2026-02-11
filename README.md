@@ -3,7 +3,7 @@
 ## Element
 * facilita o retorno de elementos/tags específicas, definindo o tipo e o valor da chamada
 
-## js.dom
+## DOM
 * extende a classe Element
 * um "jquery da vida" para simplificar o DOM usando classe em js (ignore style.mjs, ele está vazio e vou excluir ele depois)
 * como isso é só DOM, ele pode ser usado em conjunto com tailwind, bootstrap e entre outros
