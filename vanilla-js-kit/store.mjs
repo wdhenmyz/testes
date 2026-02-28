@@ -20,8 +20,12 @@ export default class Store {
   }
 
   // ---- GET ----
-  get() {
-    return structuredClone(this.state);
+  get(val = null) {
+    if (typeof val === "string") {
+        return structuredClone(this.state[val]);
+    } else {
+        return structuredClone(this.state);
+    }
   }
 
   // ---- SET ----
