@@ -11,6 +11,8 @@ export default class asyncStore extends Store {
       ...initialState
     };
 
+    this.state = baseState;
+
     // Se tiver chave, tenta carregar
     /*
     if (key) {
