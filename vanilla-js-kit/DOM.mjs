@@ -1,4 +1,4 @@
-import Element from "./element.mjs";
+import Element from "./Element.mjs";
 
 export default class DOM extends Element {
     //// funções de manipulação de estilos/css ////
