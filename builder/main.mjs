@@ -16,4 +16,4 @@ for (const file of pages) {
     Build(name, page)
 }
 
-Assets('css')
+Assets(['css'])

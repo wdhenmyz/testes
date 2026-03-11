@@ -27,8 +27,10 @@ function Build(name= 'Document', app) {
     fs.writeFileSync(`./dist/${name}.html`, html)
 }
 
-function Assets(params) {
-    fs.cpSync(`./src/${params}`, `./dist/${params}`, { recursive: true })
+function Assets(params = []) {
+    params.forEach(param => {
+        fs.cpSync(`./src/${param}`, `./dist/${param}`, { recursive: true })
+    });
 }
 
 export { Build, Assets }
