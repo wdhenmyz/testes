@@ -1,5 +1,5 @@
 import fs from "fs";
-import {Build} from "./builder.mjs";
+import { Build, Assets } from "./builder.mjs";
 // import index from "./src/pages/index.mjs";
 
 const pages = fs.readdirSync("./src/pages")
@@ -15,3 +15,5 @@ for (const file of pages) {
 
     Build(name, page)
 }
+
+Assets('css')
