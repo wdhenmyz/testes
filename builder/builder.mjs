@@ -1,6 +1,6 @@
 import fs from "fs"
 
-export default function Build(name= 'Document', app) {
+function Build(name= 'Document', app) {
     
     const html = `<!DOCTYPE html>
         <html>
@@ -26,3 +26,9 @@ export default function Build(name= 'Document', app) {
 
     fs.writeFileSync(`./dist/${name}.html`, html)
 }
+
+function Assets(params) {
+    fs.cpSync(`./src/${params}`, `./dist/${params}`, { recursive: true })
+}
+
+export { Build, Assets }

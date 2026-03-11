@@ -1,5 +1,5 @@
 import fs from "fs";
-import Build from "./builder.mjs";
+import {Build} from "./builder.mjs";
 // import index from "./src/pages/index.mjs";
 
 const pages = fs.readdirSync("./src/pages")
