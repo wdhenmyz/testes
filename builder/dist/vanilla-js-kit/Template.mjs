@@ -25,6 +25,21 @@ export default class Template {
         return``
     }
 
+    Render() {
+        const el = document.querySelector("body")
+
+        el.innerHTML = this.HTML()
+
+        const style = document.createElement("style")
+        style.textContent = this.Style()
+        document.head.appendChild(style)
+
+        const script = document.createElement("script")
+        script.textContent = this.Script()
+        document.body.appendChild(script)
+    }
+
+
     CSS() {
         return {}
     }

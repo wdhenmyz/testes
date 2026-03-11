@@ -2,6 +2,9 @@ import fs from "fs";
 import { Build, Assets } from "./builder.mjs";
 // import index from "./src/pages/index.mjs";
 
+fs.rmSync("./dist", { recursive: true, force: true })
+fs.mkdirSync("./dist")
+
 const pages = fs.readdirSync("./src/pages")
 
 for (const file of pages) {
@@ -16,4 +19,4 @@ for (const file of pages) {
     Build(name, page)
 }
 
-Assets(['css'])
+Assets(['vanilla-js-kit'])
