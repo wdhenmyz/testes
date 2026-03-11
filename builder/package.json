@@ -1,0 +1,9 @@
+{
+  "name": "builder",
+  "version": "1.0.0",
+  "description": "teste de um builder caseiro",
+  "main": "index.js",
+  "author": "wesllen dhenmyz brito ferreira",
+  "license": "MIT",
+  "private": false
+}
