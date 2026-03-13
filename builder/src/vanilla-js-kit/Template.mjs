@@ -6,7 +6,6 @@ export default class Template {
         this.attributes = this.ATRIBUTTES();
         this.classes = this.class();
         this.functions = this.FUNCTIONS();
-
     }
 
     HTML () {
