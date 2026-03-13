@@ -5,16 +5,8 @@ export default class Template {
         this.stores = this.Store();
         this.attributes = this.ATRIBUTTES();
         this.classes = this.class();
+        this.functions = this.FUNCTIONS();
 
-        if (typeof type === 'string' && typeof selector === 'string') {
-            // carregar os elementos
-            this.dom = new DOM(type, selector)
-
-            // definir e renderizar o template
-            
-            this._applyAttributes();
-            this._render();
-        }
     }
 
     HTML () {

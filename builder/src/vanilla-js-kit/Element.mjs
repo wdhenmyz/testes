@@ -22,6 +22,9 @@ export default class Element {
         return el2 ? [el2] : [];
       case "queryALL":
         return Array.from(document.querySelectorAll(selector))
+      case "body":
+        const el3 = document.body;
+        return el3 ? [el3] : [];
       default:
         throw new Error(`Tipo inválido: "${type}". Use "id", "tagname", "classname", "query" ou "queryALL".`);
     }
