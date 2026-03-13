@@ -1,11 +1,15 @@
 import DOM from './DOM.mjs'
 
 export default class Template {
-    constructor(type, selector) {
+    constructor(body) {
         this.stores = this.Store();
         this.attributes = this.ATRIBUTTES();
         this.classes = this.class();
         this.functions = this.FUNCTIONS();
+
+        if (body === "body") {
+            this.Render(body)
+        }
     }
 
     HTML () {
@@ -36,8 +40,8 @@ export default class Template {
         return {}
     }
 
-    Render() {
-        const el = document.querySelector('body')
+    Render(body) {
+        const el = document.querySelector(body)
 
         el.innerHTML = this.HTML()
 
