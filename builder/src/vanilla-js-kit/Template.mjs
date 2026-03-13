@@ -41,7 +41,9 @@ export default class Template {
         return {}
     }
 
-    FUNCTIONS () {}
+    FUNCTIONS () {
+        return {}
+    }
 
     Render() {
         const el = document.querySelector('body')
