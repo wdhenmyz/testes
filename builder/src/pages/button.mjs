@@ -27,4 +27,4 @@ class button extends Template {
     }
 }
 
-new button().Render()
+new button()
