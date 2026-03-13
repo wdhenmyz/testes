@@ -1,9 +1,9 @@
 import { Template } from "../vanilla-js-kit/vanilla-kit.mjs";
 
-class index extends Template {
+class button extends Template {
     HTML() {
         return `
-            <h1>Home</h1>
+            <h1>Button Page</h1>
         `
     }
 
@@ -16,8 +16,8 @@ class index extends Template {
     }
 
     Script() {
-        return ` console.log('Home') `
+        return ` console.log('enter page') `
     }
 }
 
-new index()
+new button().Render()
