@@ -20,4 +20,4 @@ export default class index extends Template {
     }
 }
 
-new index()//.Render()
+new index("body")
