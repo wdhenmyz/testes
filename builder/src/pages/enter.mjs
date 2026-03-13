@@ -1,6 +1,6 @@
 import { Template } from "../vanilla-js-kit/vanilla-kit.mjs";
 
-class enter extends Template {
+export default class enter extends Template {
     HTML() {
         return `
             <h1>enter page</h1>

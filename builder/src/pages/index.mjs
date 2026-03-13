@@ -1,6 +1,6 @@
 import { Template } from "../vanilla-js-kit/vanilla-kit.mjs";
 
-class index extends Template {
+export default class index extends Template {
     HTML() {
         return `
             <h1>Home</h1>
