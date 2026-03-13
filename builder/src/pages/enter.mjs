@@ -20,4 +20,4 @@ export default class enter extends Template {
     }
 }
 
-new enter("body")
+new enter()

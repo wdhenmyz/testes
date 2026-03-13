@@ -1,32 +1,43 @@
 import DOM from './DOM.mjs'
 
 export default class Template {
-    constructor(type, selector) {
-        if (typeof type === 'string' && typeof selector === 'string') {
-            // carregar os elementos
-            this.dom = new DOM(type, selector)
-
-            // definir e renderizar o template
-            this.stores = this.Store();
-            this._applyAttributes();
-            this._render();
-        }
+    constructor() {
+        this.stores = this.Store();
+        this.attributes = this.ATRIBUTTES();
+        this.classes = this.class();
+        this.functions = this.FUNCTIONS();
     }
 
-    HTML() {
+    HTML () {
         return ``
     }
 
-    Style() {
+    Style () {
         return``
     }
 
-    Script() {
+    Script () {
         return``
+    }
+
+    ATRIBUTTES () {
+        return {}
+    }
+
+    class () {
+        return {}
+    }
+
+    Store () {
+        return {}
+    }
+
+    FUNCTIONS () {
+        return {}
     }
 
     Render() {
-        const el = document.querySelector("body")
+        const el = document.querySelector('body')
 
         el.innerHTML = this.HTML()
 
@@ -39,20 +50,7 @@ export default class Template {
         document.body.appendChild(script)
     }
 
-
-    CSS() {
-        return {}
-    }
-
-    ATRIBUTTES() {
-        return {}
-    }
-
-    FUNCTIONS(dom) {}
-
-    Store () {
-        return {}
-    }
+    
 
     _render() {
         this.dom.innerHTML(this.HTML());

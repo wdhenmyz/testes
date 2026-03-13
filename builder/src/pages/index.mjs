@@ -20,4 +20,4 @@ export default class index extends Template {
     }
 }
 
-new index("body")
+new index()
