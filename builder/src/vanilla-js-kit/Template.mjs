@@ -17,29 +17,31 @@ export default class Template {
         }
     }
 
-    HTML() {
+    HTML () {
         return ``
     }
 
-    Style() {
+    Style () {
         return``
     }
 
-    Script() {
+    Script () {
         return``
     }
 
-    ATRIBUTTES() {
+    ATRIBUTTES () {
         return {}
     }
 
-    class() {
+    class () {
         return {}
     }
 
     Store () {
         return {}
     }
+
+    FUNCTIONS () {}
 
     Render() {
         const el = document.querySelector('body')
@@ -55,7 +57,7 @@ export default class Template {
         document.body.appendChild(script)
     }
 
-    FUNCTIONS(dom) {}
+    
 
     _render() {
         this.dom.innerHTML(this.HTML());
