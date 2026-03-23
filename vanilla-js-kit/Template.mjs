@@ -1,5 +1,3 @@
-import DOM from './DOM.mjs'
-
 export default class Template {
     constructor() {
         this.stores = this.Store();
