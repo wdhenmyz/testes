@@ -1,11 +1,14 @@
-import DOM from './DOM.mjs'
-
 export default class Template {
-    constructor() {
+    constructor(body) {
         this.stores = this.Store();
         this.attributes = this.ATRIBUTTES();
         this.classes = this.class();
         this.functions = this.FUNCTIONS();
+        this.css = this.Css();
+
+        if (body === 'body') {
+            this.Render('body')
+        }
     }
 
     HTML () {
@@ -14,6 +17,10 @@ export default class Template {
 
     Style () {
         return``
+    }
+
+    Css () {
+        return {}
     }
 
     Script () {
@@ -36,8 +43,8 @@ export default class Template {
         return {}
     }
 
-    Render() {
-        const el = document.querySelector('body')
+    Render(body) {
+        const el = document.querySelector(body)
 
         el.innerHTML = this.HTML()
 
@@ -48,20 +55,5 @@ export default class Template {
         const script = document.createElement("script")
         script.textContent = this.Script()
         document.body.appendChild(script)
-    }
-
-    
-
-    _render() {
-        this.dom.innerHTML(this.HTML());
-        this.dom.set(this.CSS());
-        this.FUNCTIONS(this.dom)
-    }
-
-    _applyAttributes() {
-        const attributes = this.ATRIBUTTES();
-        Object.entries(attributes).forEach(([att, value]) => {
-            this.dom.attribute(att, value);
-        });
     }
 }
