@@ -1,5 +1,7 @@
 # aqui estou testando algumas ideias 
 
+### https://www.sqlitetutorial.net/sqlite-nodejs/
+
 ## Element
 * facilita o retorno de elementos/tags específicas, definindo o tipo e o valor da chamada
 
