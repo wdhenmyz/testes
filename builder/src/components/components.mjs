@@ -1,5 +1,5 @@
-import button from "./button.mjs";
+import Button from "./button.mjs";
 
 export {
-    button
+    Button
 }
