@@ -1,3 +1,5 @@
+import transaction from "better-sqlite3/lib/methods/transaction"
+
 export default class DBDriver {
     constructor(drivers = {}) {
         this.drivers = drivers
@@ -9,6 +11,9 @@ export default class DBDriver {
 
             case "sqlite3":
                 return await this._sqlite3Driver(this.drivers["sqlite3"], config)
+
+            case "photostructure-sqlite":
+                return await this._photostructure_sqlite(this.drivers["photostructure-sqlite"], config)
 
             case "better-sqlite3":
                 return await this._bettersqlite3(this.drivers["better-sqlite3"], config)
@@ -35,6 +40,25 @@ export default class DBDriver {
             close: () => db.close(),
         }
 
+    }
+
+    async _photostructure_sqlite(driver, config = {}) {
+
+        const { DatabaseSync } = driver
+
+        const { file } = config
+
+        const db = new DatabaseSync(file);
+
+        return { 
+            raw: db,
+            exec: (sql) => db.exec(sql),
+            prepare: (sql) => db.prepare(sql),
+            run: (sql, params) => db.prepare(sql).run(params ?? null),
+            get: (sql, params) => db.prepare(sql).get(params ?? null),
+            all: (sql) => db.prepare(sql).all(),
+            transaction: (func) => db.transaction(func),
+        }
     }
 
     async _bettersqlite3 (driver, config = {}) {
