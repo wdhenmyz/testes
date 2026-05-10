@@ -78,7 +78,7 @@ export default class DBDriver {
 
     async _pgDriver(driver, config = {}) {
 
-        const { Client, Pool } = driver
+        const { Client, Pool, Cursor } = driver
 
         const conection = config.url ? config.url : `postgresql://${config.user}:${config.password}@${config.host}:${config.port}/${config.database}`
 
@@ -91,19 +91,27 @@ export default class DBDriver {
         })
 
         return { 
-            client, 
+            client: {
+                raw: client,
+                query: (query, params) => client.query(query, params ?? null),
+                end: () => client.end(),
+                on: (event, callback) => client.on(event, callback),
+            }, 
             pool: {
-                pool,
-                properties: {
-                    totalCount: () => pool.totalCount,
-                    idleCount: () => pool.idleCount,
-                    waitingCount: () => pool.waitingCount,
-                },
+                raw: pool,
+                query: (query, params) => pool.query(query, params ?? null),
                 connect: () => pool.connect(),
+                release: (client) => client.release(),
+                properties: () => {
+                    return {
+                        totalCount: () => pool.totalCount,
+                        idleCount: () => pool.idleCount,
+                        waitingCount: () => pool.waitingCount }
+                },
+                end: () => pool.end(),
+                on: (event, callback) => pool.on(event, callback),
             },
-            query: (pg, query, params) => pg.query(query, params ?? null),
-            end: (pg) => pg.end(),
-            on: (pg, event, callback) => pg.on(event, callback),
+            cursor: (text, values) => new Cursor(text, values)
         }
     }
 }
