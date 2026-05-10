@@ -1,5 +1,3 @@
-import transaction from "better-sqlite3/lib/methods/transaction"
-
 export default class DBDriver {
     constructor(drivers = {}) {
         this.drivers = drivers
@@ -78,7 +76,7 @@ export default class DBDriver {
 
     }
 
-    async _pgDriver(driver, config) {
+    async _pgDriver(driver, config = {}) {
 
         const { Client, Pool } = driver
 
@@ -94,12 +92,19 @@ export default class DBDriver {
 
         return { 
             client, 
-            pool,
+            pool: {
+                pool,
+                properties: {
+                    totalCount: () => pool.totalCount,
+                    idleCount: () => pool.idleCount,
+                    waitingCount: () => pool.waitingCount,
+                },
+                connect: () => pool.connect(),
+            },
+            query: (pg, query, params) => pg.query(query, params ?? null),
+            end: (pg) => pg.end(),
+            on: (pg, event, callback) => pg.on(event, callback),
         }
     }
 
 }
-
-/*
-    https://www.sqlitetutorial.net/sqlite-nodejs/create-tables/
-*/
