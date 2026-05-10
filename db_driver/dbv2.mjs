@@ -111,7 +111,11 @@ export default class DBDriver {
                 end: () => pool.end(),
                 on: (event, callback) => pool.on(event, callback),
             },
-            cursor: (text, values) => new Cursor(text, values)
+            cursor: async (text, values, size) => {
+                const c = new Cursor(text, values)
+                const read = await c.read(size ?? 100)
+                return read
+            }
         }
     }
 }
