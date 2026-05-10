@@ -106,5 +106,7 @@ export default class DBDriver {
             on: (pg, event, callback) => pg.on(event, callback),
         }
     }
-
 }
+/*
+    https://www.sqlitetutorial.net/sqlite-nodejs/create-tables/
+*/
