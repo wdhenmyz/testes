@@ -3,6 +3,8 @@ import { Template } from "../vanilla-js-kit/vanilla-kit.mjs";
 import { Button } from "../components/components.mjs";
 import { head } from "../head/head1.mjs";
 
+new EventSource('/esbuild').addEventListener('change', () => location.reload())
+
 export default class index extends Template {
     Head() {
         return head({
@@ -15,7 +17,7 @@ export default class index extends Template {
         const { bt } = this.css;
 
         return `
-            <h1>Home</h1>
+            <h1>Home ola</h1>
             ${Button(bt, this.functions.helloWorld)}            
         `
     }
