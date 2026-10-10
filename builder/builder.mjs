@@ -5,11 +5,11 @@ export function Build(name= 'Document', app) {
     const html = `<!DOCTYPE html>
 <html>
     <head>
-        ${app.Head()}
+${app.Head()}
     </head>
 
     <body>
-        ${app.Body()}
+${app.Body()}
     </body>
 </html>
 `

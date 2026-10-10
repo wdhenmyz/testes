@@ -15,11 +15,7 @@ export default class Template {
     }
 
     Body () {
-        return `
-
-        <script>
-            ${this.Script()}
-        </script>`
+        return ``
     }
 
     Style () {

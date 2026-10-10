@@ -1,14 +1,29 @@
 import { Template } from "../vanilla-js-kit/vanilla-kit.mjs";
 
 import { Button } from "../components/components.mjs";
+import { head } from "../head/head1.mjs";
 
 export default class index extends Template {
-    HTML() {
+    Head() {
+        return head({
+            title: "index",
+            style: this.Style(), 
+            extra: `
+            <script>`+
+                this.Script()
+                +
+            `</script>`
+        })
+    }
+
+    Body() {
         const { bt } = this.css;
 
         return `
             <h1>Home</h1>
             ${Button(bt, this.functions.helloWorld)}
+
+            
         `
     }
 
@@ -24,7 +39,7 @@ export default class index extends Template {
         return ` console.log('Home') `
     }
 
-    FUNCTIONS() {
+    Functions() {
         return {
             helloWorld: "console.log('Hello World')"
         }
@@ -37,4 +52,4 @@ export default class index extends Template {
     }
 }
 
-new index('body')
+new index('render')
