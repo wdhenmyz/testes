@@ -1,33 +1,36 @@
 export default class Template {
-    constructor(body) {
-        this.stores = this.Store();
-        this.attributes = this.ATRIBUTTES();
+    constructor(render) {
+        this.attributes = this.Attributes();
         this.classes = this.class();
-        this.functions = this.FUNCTIONS();
+        this.functions = this.Functions();
         this.css = this.Css();
 
-        if (body === 'body') {
-            this.Render('body')
+        if (render === 'render') {
+            this.Render()
         }
     }
 
-    HTML () {
+    Head () {
         return ``
+    }
+
+    Body () {
+        return `
+
+        <script>
+            ${this.Script()}
+        </script>`
     }
 
     Style () {
         return``
     }
 
-    Css () {
-        return {}
-    }
-
     Script () {
         return``
     }
 
-    ATRIBUTTES () {
+    Attributes () {
         return {}
     }
 
@@ -35,25 +38,19 @@ export default class Template {
         return {}
     }
 
-    Store () {
+    Css () {
         return {}
     }
 
-    FUNCTIONS () {
+    Functions () {
         return {}
     }
 
-    Render(body) {
-        const el = document.querySelector(body)
+    Render() {
+        const b = document.querySelector('body')
+        const h = document.querySelector('head')
 
-        el.innerHTML = this.HTML()
-
-        const style = document.createElement("style")
-        style.textContent = this.Style()
-        document.head.appendChild(style)
-
-        const script = document.createElement("script")
-        script.textContent = this.Script()
-        document.body.appendChild(script)
+        h.innerHTML = this.Head()
+        b.innerHTML = this.Body()
     }
 }
