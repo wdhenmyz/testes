@@ -45,4 +45,4 @@ export default class index extends Template {
     }
 }
 
-//new index('render')
+new index('render')

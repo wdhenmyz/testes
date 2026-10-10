@@ -18,5 +18,8 @@
     }
   },
   "packageManager": "pnpm@12.10.1",
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
 }
