@@ -7,12 +7,7 @@ export default class index extends Template {
     Head() {
         return head({
             title: "index",
-            style: this.Style(), 
-            extra: `
-            <script>`+
-                this.Script()
-                +
-            `</script>`
+            style: this.Style()
         })
     }
 
@@ -21,9 +16,7 @@ export default class index extends Template {
 
         return `
             <h1>Home</h1>
-            ${Button(bt, this.functions.helloWorld)}
-
-            
+            ${Button(bt, this.functions.helloWorld)}            
         `
     }
 
@@ -52,4 +45,4 @@ export default class index extends Template {
     }
 }
 
-new index('render')
+//new index('render')

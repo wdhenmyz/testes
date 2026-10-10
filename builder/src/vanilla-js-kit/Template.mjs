@@ -48,5 +48,9 @@ export default class Template {
 
         h.innerHTML = this.Head()
         b.innerHTML = this.Body()
+
+        const script = document.createElement('script');
+        script.textContent = this.Script()
+        b.appendChild(script)
     }
 }
