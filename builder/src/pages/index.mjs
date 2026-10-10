@@ -3,8 +3,6 @@ import { Template } from "../vanilla-js-kit/vanilla-kit.mjs";
 import { Button } from "../components/components.mjs";
 import { head } from "../head/head1.mjs";
 
-new EventSource('/esbuild').addEventListener('change', () => location.reload())
-
 export default class index extends Template {
     Head() {
         return head({
