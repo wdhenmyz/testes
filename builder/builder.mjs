@@ -68,7 +68,7 @@ class builder {
             const mjs = `import { Template } from "../vanilla-js-kit/vanilla-kit.mjs";
             import { head } from "../head/head1.mjs";
             
-            export default class index extends Template {
+            export default class ${page} extends Template {
                 Head() {
                     return head({
                         title: "${page}",
@@ -77,15 +77,15 @@ class builder {
                 }
 
                 Body() {
-                    return "<h1>${page} ola</h1>"
+                    return \`<h1>${page} ola</h1>\`
                 }
                 
                 Style() {
-                    return "h1 { color: red; }"
+                    return \`h1 { color: red; }\`
                 }
 
                 Script() {
-                    return "console.log('${page}')"
+                    return \`console.log('${page}')\`
                 }
             }
 
@@ -94,6 +94,10 @@ class builder {
 
             this.fs.writeFileSync(`${this.src}/${page}.html`, html)
             this.fs.writeFileSync(`${this.src}/pages/${page}.mjs`, mjs)
+
+            this.rl.close()
+
+            return console.log(`página ${page} criada com sucesso!`)
         }
     }
 }
